@@ -2,7 +2,7 @@ package com.app.tiktok.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
+import android.view.MotionEvent
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -12,8 +12,6 @@ import com.app.tiktok.ui.home.adapter.StoriesViewHolder
 import com.app.tiktok.utils.MediaManager
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.PlaybackException
-import com.google.android.exoplayer2.Player
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.util.*
@@ -21,16 +19,14 @@ import java.util.*
 class StoriesRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : RecyclerView(context, attrs), KoinComponent {
-    private val TAG = "ViewSupportedRecycler"
-
     private val mediaManager: MediaManager by inject()
 
     private var scrollingUp = false
-    private var toPlayPosition = -1
-    private var currentPlayingPosition = -1
     private var dataList = arrayListOf<StoriesDataModel>()
 
-    private val player: ExoPlayer = ExoPlayer.Builder( /* context= */context)
+    private var currentPlayingPosition = -1
+
+    private val player: ExoPlayer = ExoPlayer.Builder(context)
         .setMediaSourceFactory(mediaManager.mediaSourceFactory)
         .build()
 
@@ -47,10 +43,13 @@ class StoriesRecyclerView @JvmOverloads constructor(
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (newState == SCROLL_STATE_IDLE) {
-                    playVideo()
-                } else {
-                    player.pause()
+                when(newState) {
+                    SCROLL_STATE_IDLE -> {
+                        playVideo()
+                    }
+                    else -> {
+                        player.pause()
+                    }
                 }
             }
         })
@@ -63,26 +62,28 @@ class StoriesRecyclerView @JvmOverloads constructor(
         val lastCompletelyVisibleItemPosition = (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
         val firstCompletelyVisibleItemPosition = (layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
 
-        val position = if (!scrollingUp) {
+        val targetPosition = if (!scrollingUp) {
                 lastVisibleItemPosition
         } else {
                 firstVisibleItemPosition
         }
 
-        if (position >= 0) {
-            toPlayPosition = position
-        }
-
-        if (toPlayPosition != currentPlayingPosition) {
+        if (targetPosition != currentPlayingPosition) {
 
             currentPlayingPosition = if (!scrollingUp) {
+                if (lastCompletelyVisibleItemPosition < 0) {
+                    return
+                }
                 lastCompletelyVisibleItemPosition
             } else {
+                if (firstCompletelyVisibleItemPosition < 0) {
+                    return
+                }
                 firstCompletelyVisibleItemPosition
             }
 
             if (currentPlayingPosition < 0) {
-                currentPlayingPosition = toPlayPosition
+                currentPlayingPosition = targetPosition
             }
 
             player.stop()
@@ -92,32 +93,24 @@ class StoriesRecyclerView @JvmOverloads constructor(
             val currentPlayerViewStory = currentViewBinding?.layoutStoryView?.playerViewStory
             currentPlayerViewStory?.player = null
 
-            val viewHolder = findViewHolderForAdapterPosition(toPlayPosition)
+            val viewHolder = findViewHolderForAdapterPosition(targetPosition)
             val viewBinding = (viewHolder as? StoriesViewHolder)?.viewBinding
             val playerViewStory = viewBinding?.layoutStoryView?.playerViewStory
             playerViewStory?.player = player
 
+            playerViewStory?.setOnTouchListener { v, event ->
+                when(event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        player?.pause()
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        player?.play()
+                    }
+                }
+                true
+            }
+
             val storiesDataModel = dataList[currentPlayingPosition]
-
-            player.addListener(object: Player.Listener {
-                override fun onPlaybackStateChanged(playbackState: Int) {
-                    super.onPlaybackStateChanged(playbackState)
-
-                    Log.d(TAG, "onPlaybackStateChanged: playbackState: $playbackState")
-                }
-
-                override fun onPlayerError(error: PlaybackException) {
-                    super.onPlayerError(error)
-
-                    Log.d(TAG, "onPlayerError: error: $error")
-                }
-
-                override fun onEvents(player: Player, events: Player.Events) {
-                    super.onEvents(player, events)
-
-                    Log.d(TAG, "onEvents: events: $events")
-                }
-            })
 
             val mediaItem: MediaItem = MediaItem.Builder()
                 .setMediaId(storiesDataModel.storyId.toString())
@@ -125,6 +118,7 @@ class StoriesRecyclerView @JvmOverloads constructor(
                 .build()
 
             player.playWhenReady = true
+            player.repeatMode = ExoPlayer.REPEAT_MODE_ONE
             player.setMediaItem(mediaItem)
             player.prepare()
             player.play()
@@ -139,7 +133,6 @@ class StoriesRecyclerView @JvmOverloads constructor(
         (adapter as? ListAdapter<StoriesDataModel, ViewHolder>)?.submitList(list)
 
         if (shouldPlayFirstVideo) {
-            toPlayPosition = 0
             scrollToPosition(0)
         }
     }
