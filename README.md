@@ -1,28 +1,28 @@
 <a href="https://www.linkedin.com/in/baljeet-singh-402303116/">
     <img src="https://img.shields.io/badge/Support-Endorse%20me%20on%20Linkedin-yellow?style=for-the-badge&logo=linkedin" alt="Endorse me on LinkedIn" /></a>
     
-![](https://github.com/iambaljeet/TikTok-Videos-Videos/blob/master/art/tik_tok_banner_art.jpg)
+![](https://github.com/iambaljeet/TikTok-RecyclerView/blob/master/art/tik_tok_banner_art.jpg)
 
-# TikTok-Videos
+# TikTok-RecyclerView
 
 ## Demo
-![](https://github.com/iambaljeet/TikTok-Videos/blob/master/art/tik_tok.webp)
+![](https://github.com/iambaljeet/TikTok-RecyclerView/blob/master/art/tik_tok.webp)
 
-[![GitHub license](https://img.shields.io/github/license/iambaljeet/TikTok-Videos)](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/iambaljeet/TikTok-RecyclerView)](LICENSE)
 ![Github Followers](https://img.shields.io/github/followers/iambaljeet?style=social)
-![GitHub stars](https://img.shields.io/github/stars/iambaljeet/TikTok-Videos?style=social)
-![GitHub forks](https://img.shields.io/github/forks/iambaljeet/TikTok-Videos-Videos)
-![GitHub watchers](https://img.shields.io/github/watchers/iambaljeet/TikTok-Videos?style=social)
-![Tweet](	https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fiambaljeet%2FTikTok-Videos)
+![GitHub stars](https://img.shields.io/github/stars/iambaljeet/TikTok-RecyclerView?style=social)
+![GitHub forks](https://img.shields.io/github/forks/iambaljeet/TikTok-RecyclerView-Videos)
+![GitHub watchers](https://img.shields.io/github/watchers/iambaljeet/TikTok-RecyclerView?style=social)
+![Tweet](	https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fiambaljeet%2FTikTok-RecyclerView)
 ![Twitter Follow](https://img.shields.io/twitter/follow/yetanotherdev_?label=Follow&style=social)
 
 ## About
-This is a demo app built using 'Hilt' a new dependency injection framework for Android along with ViewPager2 and ExoPlayer2.
-- HomeScreen UI is replicated same as TikTok-Videos Android App.
+This is a demo app built using 'Koin' a new dependency injection framework for Android along with RecyclerView and ExoPlayer2.
+- HomeScreen UI is replicated same as TikTok-RecyclerView Android App.
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Hilt](https://developer.android.com/training/dependency-injection/hilt-jetpack) - Dependency injection library for Android.
+- [Koin](https://insert-koin.io/) - Dependency injection library for Android.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
   - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
@@ -45,5 +45,5 @@ Visit:- [baljeet.dev](https://baljeet.dev)
 
 ## License
 
-GNU License Visit:- [LICENSE](https://github.com/iambaljeet/TikTok-Videos/blob/master/LICENSE)
+GNU License Visit:- [LICENSE](https://github.com/iambaljeet/TikTok-RecyclerView/blob/master/LICENSE)
 
