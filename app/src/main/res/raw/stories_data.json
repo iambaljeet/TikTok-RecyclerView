@@ -1,0 +1,72 @@
+[
+  {
+    "storyId" : 1,
+    "storyUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "storyThumbUrl" : "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 1,
+    "userProfilePicUrl" : "https://picsum.photos/200",
+    "userName" : "@Sherlyn",
+    "likesCount" : 500,
+    "commentsCount" : 1000,
+    "contentWarning" : null
+  },
+  {
+    "storyId" : 2,
+    "storyUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "storyThumbUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 1,
+    "userProfilePicUrl" : "https://picsum.photos/200",
+    "userName" : "@Sophia",
+    "likesCount" : 20,
+    "commentsCount" : 1005,
+    "contentWarning" : null
+  },
+  {
+    "storyId" : 3,
+    "storyUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "storyThumbUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 2,
+    "userProfilePicUrl" : "https://picsum.photos/200",
+    "userName" : "@Henry",
+    "likesCount" : 9777774,
+    "commentsCount" : 1500000,
+    "contentWarning" : null
+  },
+  {
+    "storyId" : 4,
+    "storyUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "storyThumbUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 3,
+    "userProfilePicUrl" : "https://picsum.photos/200",
+    "userName" : "@Chris",
+    "likesCount" : 888000,
+    "commentsCount" : 5544,
+    "contentWarning" : null
+  },
+  {
+    "storyId" : 5,
+    "storyUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "storyThumbUrl" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg",
+    "storyDescription" : "#besafe #covid-19 #corona #motivation #life #lockdown",
+    "musicCoverTitle" : "God's Plan",
+    "musicCoverImageLink" : null,
+    "userId" : 4,
+    "userProfilePicUrl" : "https://picsum.photos/200",
+    "userName" : "@Stark",
+    "likesCount" : 220,
+    "commentsCount" : 25,
+    "contentWarning" : null
+  }
+]
